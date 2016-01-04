@@ -25,7 +25,7 @@ class demo2 extends Simulation {
 	}
 
 	object GetRegularJson {
-  	val getRegularJson = exec(http("getRegularJson").get("/getJson?name=dongmu")).pause(1)
+  	val getRegularJson = exec(http("getRegularJson").get("/getJson?name=beibei")).pause(1)
 	}
 
 	val htmlUsers = scenario("htmlUsers").exec(GetNullHtml.getNullHtml, GetRegularHtml.getRegularHtml)

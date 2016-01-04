@@ -15,7 +15,7 @@ class demo1 extends Simulation {
   val scn = scenario("myDemo1")
     .exec(
     	http("getJson")
-      .get("/getJson?name=dongmu")
+      .get("/getJson?name=beibei")
 			.headers(headers)
 			.check(status.is(200))
 		)
