@@ -30,7 +30,6 @@ def my_json():
 def my_form_json():
     global num
     name = request.form["name"] if "name" in request.form else "default"
-    print request.form["name"]
     jsonStr = {"name": name, "number": num}
     num += 1
     return jsonify(jsonStr)
