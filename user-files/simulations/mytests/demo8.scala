@@ -4,7 +4,7 @@ import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
-class demo1 extends Simulation {
+class demo8 extends Simulation {
 
   val httpConf = http
     .baseURL("http://127.0.0.1:8888")
@@ -17,7 +17,7 @@ class demo1 extends Simulation {
     	http("getJson")
       .get("/getJson?name=beibei")
 			.headers(headers)
-			.check(status.is(200))
+			.check(status.is(200), bodyString.is(ELFileBody("expected_template.json")))
 		)
     .pause(1)
       

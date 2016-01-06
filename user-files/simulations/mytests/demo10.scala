@@ -1,10 +1,11 @@
+
 package mytests
 
 import io.gatling.core.Predef._
 import io.gatling.http.Predef._
 import scala.concurrent.duration._
 
-class demo1 extends Simulation {
+class demo10 extends Simulation {
 
   val httpConf = http
     .baseURL("http://127.0.0.1:8888")
@@ -17,10 +18,11 @@ class demo1 extends Simulation {
     	http("getJson")
       .get("/getJson?name=beibei")
 			.headers(headers)
-			.check(status.is(200))
+			.check(status.is(200), jsonPath("$..name").is("beibei"), jsonPath("$..number").ofType[Int] )
 		)
     .pause(1)
       
   setUp(scn.inject(atOnceUsers(100))
   	.protocols(httpConf))
+  	.assertions(forAll.responseTime.max.lessThan(1))
 }
